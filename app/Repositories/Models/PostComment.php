@@ -29,4 +29,10 @@ class PostComment extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->diffForHumans();
+    }
+
 }
