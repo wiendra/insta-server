@@ -31,11 +31,10 @@ class PostLikeController extends Controller
         }
     }
 
-    public function dislike()
+    public function unlike(int $postId)
     {
         try {
             $userId = Auth::id();
-            $postId = request()->route('id');
             $this->post->delete($postId, $userId);
             return response()->json([
                 'message' => 'Post unliked successfully.'
